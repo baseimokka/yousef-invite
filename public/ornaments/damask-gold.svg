@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="420" viewBox="0 0 420 420">
+  <!-- Larger, radial gold damask used behind the envelope. Slightly higher
+       contrast than the ivory tile but still tone-on-tone. -->
+  <defs>
+    <g id="bloom">
+      <path d="M0,-74 C20,-50 38,-30 38,-6 C38,18 20,34 0,44 C-20,34 -38,18 -38,-6 C-38,-30 -20,-50 0,-74 Z"/>
+      <path d="M0,-46 C11,-30 20,-17 20,-4 C20,9 11,19 0,24 C-11,19 -20,9 -20,-4 C-20,-17 -11,-30 0,-46 Z" fill="#c08a4a"/>
+      <path d="M0,44 C16,58 34,64 52,60 C46,78 28,86 6,82 C12,68 9,54 0,44 Z"/>
+      <path d="M0,44 C-16,58 -34,64 -52,60 C-46,78 -28,86 -6,82 C-12,68 -9,54 0,44 Z"/>
+      <path d="M-38,-6 C-60,-16 -78,-6 -86,12 C-68,22 -50,18 -40,6 Z"/>
+      <path d="M38,-6 C60,-16 78,-6 86,12 C68,22 50,18 40,6 Z"/>
+      <path d="M-38,-6 C-52,-26 -50,-44 -38,-58 C-28,-46 -30,-26 -34,-12 Z"/>
+      <path d="M38,-6 C52,-26 50,-44 38,-58 C28,-46 30,-26 34,-12 Z"/>
+      <ellipse cx="0" cy="-82" rx="7" ry="11"/>
+      <circle cx="-66" cy="26" r="5"/>
+      <circle cx="66" cy="26" r="5"/>
+    </g>
+    <g id="leaf">
+      <path d="M0,0 C12,-14 15,-32 9,-48 C0,-37 -6,-20 0,0 Z"/>
+      <path d="M0,0 C-12,-14 -15,-32 -9,-48 C0,-37 6,-20 0,0 Z"/>
+      <circle cx="0" cy="-54" r="4"/>
+    </g>
+  </defs>
+
+  <g fill="#cb9a60" fill-opacity="0.3">
+    <use href="#bloom" transform="translate(210 210)"/>
+    <use href="#bloom" transform="translate(0 0)"/>
+    <use href="#bloom" transform="translate(420 0)"/>
+    <use href="#bloom" transform="translate(0 420)"/>
+    <use href="#bloom" transform="translate(420 420)"/>
+    <use href="#leaf" transform="translate(210 86) rotate(180)"/>
+    <use href="#leaf" transform="translate(210 334)"/>
+    <use href="#leaf" transform="translate(86 210) rotate(90)"/>
+    <use href="#leaf" transform="translate(334 210) rotate(-90)"/>
+  </g>
+</svg>

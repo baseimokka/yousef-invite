@@ -1,0 +1,1378 @@
+/* ============================================================================
+ *  Section styles.
+ *
+ *  Sizes are derived from the reference screenshots: 739 x 1600 captures of a
+ *  393 x 852 viewport, so reference pixels were divided by 1.8804.
+ * ========================================================================== */
+
+/* -- Envelope -------------------------------------------------------------- */
+
+.envelope {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background-color: var(--envelope-ground);
+  background-image: url("/ornaments/damask-gold.svg");
+  background-size: 300px 300px;
+  overflow: hidden;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.envelope.is-closing {
+  opacity: 0;
+  transform: scale(1.06);
+  pointer-events: none;
+}
+
+.envelope-card {
+  position: relative;
+  width: min(313px, 100%);
+  padding: 52px 28px 40px;
+  border-radius: var(--radius-envelope);
+  background: var(--ivory-card);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  animation: card-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+}
+
+.envelope-floral {
+  position: absolute;
+  width: 104px;
+  height: 104px;
+  pointer-events: none;
+}
+
+.envelope-floral-tl {
+  top: -22px;
+  left: -20px;
+}
+
+.envelope-floral-br {
+  bottom: -20px;
+  right: -18px;
+  transform: rotate(180deg);
+}
+
+.envelope-badge {
+  display: grid;
+  place-items: center;
+  width: 53px;
+  height: 53px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 4px 14px rgba(150, 100, 40, 0.3);
+}
+
+.envelope-name {
+  font-size: 30px;
+  line-height: 1.15;
+  color: var(--gold);
+}
+
+.envelope-amp {
+  font-size: 17px;
+  margin-block: 2px;
+}
+
+.envelope-rule {
+  width: 150px;
+  margin: 14px auto 16px;
+}
+
+.envelope-date {
+  font-size: 17px;
+  color: var(--olive);
+}
+
+.envelope-greeting {
+  margin-top: 14px;
+  font-size: 17px;
+  color: var(--olive);
+}
+
+.envelope-open {
+  position: relative;
+  margin-top: 22px;
+  overflow: hidden;
+}
+
+/* The sheen sweeping across the button, visible in the reference. */
+.envelope-open-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 80%
+  );
+  transform: translateX(-120%);
+  animation: sheen 2.8s ease-in-out infinite;
+}
+
+@keyframes sheen {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  85%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.envelope-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 248, 232, 0.85);
+  animation: twinkle 4.5s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(0) scale(0.6);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-14px) scale(1);
+  }
+}
+
+.sparkle-0 { top: 12%; left: 14%; animation-delay: 0s; }
+.sparkle-1 { top: 22%; left: 78%; animation-delay: 0.6s; }
+.sparkle-2 { top: 38%; left: 8%;  animation-delay: 1.2s; }
+.sparkle-3 { top: 62%; left: 88%; animation-delay: 1.8s; }
+.sparkle-4 { top: 76%; left: 20%; animation-delay: 2.4s; }
+.sparkle-5 { top: 86%; left: 68%; animation-delay: 3s; }
+.sparkle-6 { top: 50%; left: 48%; animation-delay: 3.6s; }
+
+/* -- Paper reveal ---------------------------------------------------------- */
+
+.paper {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  padding-bottom: 72px;
+}
+
+.paper.is-revealed {
+  opacity: 1;
+}
+
+/* -- Hero ------------------------------------------------------------------ */
+
+.hero-eyebrow {
+  margin-bottom: 26px;
+}
+
+.hero-floral-tr {
+  top: -56px;
+  right: -54px;
+  width: 132px;
+  height: 132px;
+}
+
+.hero-floral-bl {
+  bottom: 40px;
+  left: -46px;
+  width: 128px;
+  height: 128px;
+  transform: rotate(-150deg);
+}
+
+[dir="rtl"] .hero-floral-bl {
+  transform: scaleX(-1) rotate(-150deg);
+}
+
+.hero-frame-wrap {
+  position: relative;
+  width: 100%;
+  margin-inline: auto;
+  aspect-ratio: 400 / 440;
+}
+
+.hero-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Florals that belong to the frame, placed the way the reference does:
+   one riding the left edge, a larger one at the bottom-right corner. */
+.hero-frame-floral {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hffl {
+  left: -6%;
+  top: 34%;
+  width: 36%;
+  transform: rotate(-12deg);
+}
+
+.hffbr {
+  right: -4%;
+  bottom: 4%;
+  width: 44%;
+  transform: rotate(14deg);
+}
+
+[dir="rtl"] .hffl {
+  transform: scaleX(-1) rotate(-12deg);
+}
+
+[dir="rtl"] .hffbr {
+  transform: scaleX(-1) rotate(14deg);
+}
+
+/* The names sit above the florals. */
+.hero-names {
+  z-index: 2;
+}
+
+/* The names sit inside the frame's clear interior. Percentages keep them
+   locked to the artwork however wide the screen gets. */
+.hero-names {
+  position: absolute;
+  inset: 22% 19% 22% 19%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.hero-name {
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+[dir="rtl"] .hero-name {
+  letter-spacing: 0;
+}
+
+.hero-amp {
+  font-size: 17px;
+}
+
+/* -- Families -------------------------------------------------------------- */
+
+.families {
+  margin-top: 34px;
+}
+
+.families-heading {
+  margin-bottom: 20px;
+}
+
+.families-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0 16px;
+  align-items: start;
+}
+
+.families-grid::before {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  width: 1px;
+  height: 100%;
+  background: var(--tan-line);
+}
+
+.family {
+  text-align: center;
+}
+
+.family:first-child {
+  grid-column: 1;
+}
+
+.family:last-child {
+  grid-column: 3;
+}
+
+.family-title {
+  font-size: 14px;
+  color: var(--olive);
+  margin-bottom: 6px;
+}
+
+.family-name {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--gold);
+}
+
+/* -- Announcement and full names ------------------------------------------- */
+
+.announcement {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--gold);
+  text-align: center;
+}
+
+.announcement-line {
+  display: block;
+}
+
+.full-names {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.full-name {
+  font-size: 29px;
+  line-height: 1.25;
+  color: var(--olive);
+}
+
+.full-names-amp {
+  font-size: 20px;
+  margin-block: 14px;
+}
+
+.names-swirl-tr {
+  top: 78px;
+  right: -52px;
+  width: 84px;
+  height: 158px;
+  opacity: 0.9;
+}
+
+.names-swirl-bl {
+  top: 296px;
+  left: -54px;
+  width: 80px;
+  height: 150px;
+  opacity: 0.9;
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .names-swirl-bl {
+  transform: none;
+}
+
+/* -- Event blocks ---------------------------------------------------------- */
+
+.event {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.event-label {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+
+[dir="rtl"] .event-label {
+  letter-spacing: 0;
+  font-size: 18px;
+}
+
+.event-venue {
+  margin-top: 4px;
+  font-size: 17px;
+  color: var(--olive);
+}
+
+.event-at {
+  margin-top: 12px;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+
+.event-time {
+  margin-top: 10px;
+  font-size: 21px;
+  color: var(--gold);
+}
+
+/* -- Date row -------------------------------------------------------------- */
+
+.date-block {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.date-side {
+  flex: 1;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-align: center;
+}
+
+[dir="rtl"] .date-side {
+  letter-spacing: 0;
+  font-size: 14px;
+}
+
+.date-rule {
+  width: 1px;
+  height: 26px;
+  background: var(--olive);
+  opacity: 0.6;
+}
+
+.date-day {
+  font-size: 27px;
+  color: var(--gold);
+  min-width: 46px;
+}
+
+.date-year {
+  margin-top: 10px;
+  font-size: 19px;
+  color: var(--gold);
+}
+
+/* -- Gallery --------------------------------------------------------------- */
+
+.coverflow {
+  position: relative;
+  height: 320px;
+  margin-top: 24px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  touch-action: pan-y;
+  outline: none;
+}
+
+.coverflow-slide {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 200px;
+  height: 300px;
+  margin-left: -100px;
+  border-radius: var(--radius-photo);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  will-change: transform;
+  background: var(--ivory-sunk);
+}
+
+.coverflow-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coverflow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.coverflow-arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-size: 26px;
+  color: var(--gold);
+  border-radius: 50%;
+}
+
+.coverflow-counter {
+  font-size: 15px;
+  color: var(--olive);
+  min-width: 56px;
+  text-align: center;
+}
+
+/* -- Reception info and pillars -------------------------------------------- */
+
+.reception {
+  position: relative;
+  padding-block: 28px;
+}
+
+/* Physical left/right on purpose: the pillars are a mirrored pair, so they are
+   symmetrical as a unit and must not swap sides in Arabic. */
+.pillar {
+  top: 0;
+  width: 88px;
+  height: 100%;
+}
+
+.pillar-start {
+  left: -12px;
+}
+
+.pillar-end {
+  right: -12px;
+  transform: scaleX(-1);
+}
+
+.reception-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding-inline: 56px;
+}
+
+.reception-subheading {
+  margin-top: 4px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+}
+
+.reception-time {
+  margin-top: 26px;
+  font-size: 23px;
+  color: var(--olive);
+}
+
+.welcome-reception {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.wr-col {
+  text-align: center;
+}
+
+.wr-col .label-caps {
+  color: var(--gold);
+}
+
+.wr-time {
+  margin-top: 8px;
+  font-size: 19px;
+  color: var(--olive);
+}
+
+/* The reception block states its times in olive; the ceremony block above
+   states the same kind of information in gold. Both are from the reference. */
+.date-block.is-olive .date-day,
+.date-block.is-olive .date-year {
+  color: var(--olive);
+  background-image: none;
+  -webkit-text-fill-color: var(--olive);
+}
+
+.countdown {
+  margin-top: 34px;
+}
+
+.countdown-value {
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--olive);
+}
+
+.countdown-unit {
+  white-space: nowrap;
+}
+
+/* -- Mini calendar --------------------------------------------------------- */
+
+.calendar {
+  position: relative;
+  padding: 30px 20px 24px;
+  border: 1px solid var(--gold);
+  background: var(--ivory-card);
+}
+
+.calendar-corner {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  pointer-events: none;
+}
+
+.cc-tl { top: -14px; left: -14px; }
+.cc-tr { top: -14px; right: -14px; transform: scaleX(-1); }
+.cc-bl { bottom: -14px; left: -14px; transform: scaleY(-1); }
+.cc-br { bottom: -14px; right: -14px; transform: scale(-1); }
+
+.calendar-month {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--olive);
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.calendar-weekdays,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.calendar-weekday {
+  font-size: 12px;
+  color: var(--tan-muted);
+  padding-bottom: 8px;
+}
+
+.calendar-rule {
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 8px;
+}
+
+.calendar-grid {
+  gap: 4px 0;
+}
+
+.calendar-cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 32px;
+  font-size: 15px;
+  color: var(--taupe);
+}
+
+.calendar-cell.is-wedding {
+  color: #fff;
+}
+
+.calendar-heart {
+  position: absolute;
+  width: 24px;
+  height: 22px;
+  z-index: 0;
+}
+
+.calendar-cell.is-wedding b {
+  position: relative;
+  z-index: 1;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.calendar-add {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.calendar-add a {
+  color: var(--olive);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--tan-line);
+}
+
+/* -- RSVP ------------------------------------------------------------------ */
+
+.rsvp {
+  text-align: center;
+}
+
+.modal-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(32, 24, 14, 0.55);
+  backdrop-filter: blur(3px);
+  animation: fade-in 0.25s ease both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* The dialog intentionally matches the reference screenshot: a plain white
+   sans-serif card rather than a baroque one. See the README to restyle it. */
+.modal {
+  position: relative;
+  width: min(360px, 100%);
+  max-height: 86dvh;
+  overflow-y: auto;
+  padding: 28px 24px 24px;
+  border-radius: 20px;
+  background: #fff;
+  font-family: var(--font-ui);
+  text-align: start;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+  animation: modal-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  inset-inline-end: 16px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f1f1f3;
+  color: #52525b;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.modal-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #18181b;
+  padding-inline-end: 36px;
+}
+
+.modal-subtitle {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #71717a;
+}
+
+.modal-label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #27272a;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #e4e4e7;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #18181b;
+  outline: none;
+}
+
+.modal-input::placeholder {
+  color: #a1a1aa;
+}
+
+.modal-input:focus-visible {
+  border-color: var(--gold);
+}
+
+.modal-options {
+  display: grid;
+  gap: 10px;
+}
+
+.modal-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #e4e4e7;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #27272a;
+  text-align: start;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.modal-option.is-selected {
+  border-color: var(--gold);
+  background: #fdf6ee;
+}
+
+.modal-option-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 50%;
+  background: #f1f1f3;
+  color: #52525b;
+  font-size: 15px;
+}
+
+.modal-option.is-selected .modal-option-icon {
+  background: var(--gold);
+  color: #fff;
+}
+
+.modal-confirm {
+  width: 100%;
+  margin-top: 22px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #ebc9a9;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.modal-confirm.is-ready {
+  background: var(--gold);
+}
+
+.modal-confirm:disabled {
+  cursor: not-allowed;
+}
+
+.modal-error {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #b91c1c;
+}
+
+.modal-done {
+  text-align: center;
+  padding-block: 12px;
+}
+
+.modal-done-mark {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
+  font-size: 28px;
+}
+
+.modal-done p {
+  font-size: 16px;
+  color: #3f3f46;
+  line-height: 1.5;
+}
+
+/* -- Venue and map --------------------------------------------------------- */
+
+.venue {
+  text-align: center;
+}
+
+.venue-divider {
+  width: 262px;
+  margin: 0 auto 24px;
+  opacity: 0.9;
+}
+
+.venue-name {
+  margin-top: 14px;
+  font-size: 17px;
+  color: var(--olive);
+}
+
+.venue-city {
+  font-size: 17px;
+  color: var(--olive);
+}
+
+.venue-hairline {
+  height: 1px;
+  background: var(--tan-line);
+  margin: 18px 0 20px;
+}
+
+.map-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.map-frame {
+  display: block;
+  width: 100%;
+  height: 240px;
+  border: 0;
+}
+
+.map-open {
+  position: absolute;
+  top: 10px;
+  inset-inline-start: 10px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: #fff;
+  color: #1a73e8;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.venue-directions {
+  margin-top: 18px;
+}
+
+.venue-directions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  color: var(--olive);
+  text-decoration: none;
+}
+
+/* The arrow points at the destination, so it flips with the text direction. */
+[dir="rtl"] .venue-directions svg {
+  transform: scaleX(-1);
+}
+
+/* -- Dress code ------------------------------------------------------------ */
+
+.dress-code {
+  text-align: center;
+}
+
+.dress-label {
+  margin-top: 10px;
+  font-size: 16px;
+  color: var(--tan-muted);
+}
+
+.dress-swatches {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.dress-swatch {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+/* -- Schedule timeline ----------------------------------------------------- */
+
+.schedule {
+  position: relative;
+}
+
+.timeline {
+  position: relative;
+  margin-top: 28px;
+  list-style: none;
+}
+
+.timeline-rail {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 40%;
+  width: 1px;
+  background: var(--tan-line);
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 40% 0 1fr;
+  align-items: center;
+  column-gap: 0;
+  min-height: 62px;
+}
+
+.timeline-time {
+  padding-inline-end: 22px;
+  font-size: 17px;
+  color: var(--gold);
+  text-align: end;
+}
+
+.timeline-dot {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  margin-inline-start: -4px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px var(--ivory);
+}
+
+.timeline-label {
+  padding-inline-start: 22px;
+  font-size: 17px;
+  line-height: 1.35;
+  color: var(--olive);
+}
+
+.schedule-swirl-1 {
+  top: 130px;
+  left: -22px;
+  width: 54px;
+  height: 102px;
+  opacity: 0.85;
+}
+
+.schedule-swirl-2 {
+  top: 346px;
+  left: -22px;
+  width: 54px;
+  height: 102px;
+  opacity: 0.85;
+}
+
+.schedule-floral {
+  top: -48px;
+  right: -58px;
+  width: 104px;
+  height: 104px;
+}
+
+/* -- Guestbook ------------------------------------------------------------- */
+
+.guestbook {
+  position: relative;
+}
+
+.guestbook-floral {
+  top: 54px;
+  left: -56px;
+  width: 112px;
+  height: 112px;
+  transform: rotate(-20deg);
+}
+
+[dir="rtl"] .guestbook-floral {
+  transform: scaleX(-1) rotate(-20deg);
+}
+
+.guestbook-form {
+  margin-top: 24px;
+  padding: 20px;
+  border: 1px solid var(--tan-line);
+  border-radius: var(--radius-card);
+  display: grid;
+  gap: 14px;
+}
+
+.guestbook-textarea {
+  resize: vertical;
+  min-height: 108px;
+}
+
+.guestbook-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.guestbook-wand {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 10px;
+  background: var(--ivory-sunk);
+  color: var(--gold);
+  transition: background-color 0.2s ease;
+}
+
+.guestbook-wand:hover {
+  background: #f0e6d4;
+}
+
+.guestbook-error {
+  font-size: 14px;
+  color: #b4532f;
+}
+
+.guestbook-thanks {
+  font-size: 15px;
+  color: var(--olive);
+}
+
+.wishes {
+  margin-top: 22px;
+  max-height: 420px;
+  overflow-y: auto;
+  display: grid;
+  gap: 12px;
+  padding-inline-end: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--tan-line) transparent;
+}
+
+.wishes-empty {
+  font-size: 15px;
+  color: var(--tan-muted);
+  text-align: center;
+  padding-block: 20px;
+}
+
+.wish {
+  padding: 16px;
+  border: 1px solid var(--tan-line);
+  border-radius: 12px;
+  background: var(--ivory-card);
+}
+
+.wish-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.wish-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.wish-time {
+  font-size: 12px;
+  color: var(--tan-muted);
+  white-space: nowrap;
+}
+
+.wish-message {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--olive);
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+/* -- Gift box -------------------------------------------------------------- */
+
+.gift {
+  text-align: center;
+}
+
+.gift-box {
+  display: block;
+  width: 190px;
+  margin: 20px auto 0;
+}
+
+.gift-box:disabled {
+  cursor: default;
+}
+
+.gift-illustration {
+  width: 100%;
+  height: auto;
+}
+
+.gift-lid,
+.gift-bow {
+  transform-origin: 80px 50px;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gift-box.is-open .gift-lid {
+  transform: translateY(-16px) rotate(-7deg);
+}
+
+.gift-box.is-open .gift-bow {
+  transform: translateY(-20px) rotate(-7deg);
+}
+
+.gift-tap {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--olive);
+}
+
+.gift-methods {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.gift-method {
+  padding: 16px;
+  border: 1px solid var(--tan-line);
+  border-radius: 12px;
+  background: var(--ivory-card);
+}
+
+.gift-method-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.gift-method-value {
+  margin-top: 6px;
+  font-size: 16px;
+  color: var(--olive);
+  overflow-wrap: anywhere;
+}
+
+.gift-qr {
+  width: 160px;
+  height: 160px;
+  margin: 14px auto 0;
+  border-radius: 8px;
+}
+
+.gift-thanks {
+  margin-top: 22px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--olive);
+}
+
+/* -- Floating controls ----------------------------------------------------- */
+
+.audio-fab {
+  position: fixed;
+  z-index: 90;
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  inset-inline-end: calc(18px + env(safe-area-inset-right));
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: var(--shadow-fab);
+}
+
+.audio-fab.needs-gesture {
+  animation: fab-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes fab-pulse {
+  0%,
+  100% {
+    box-shadow: var(--shadow-fab), 0 0 0 0 rgba(185, 125, 62, 0.5);
+  }
+  50% {
+    box-shadow: var(--shadow-fab), 0 0 0 12px rgba(185, 125, 62, 0);
+  }
+}
+
+.eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 20px;
+}
+
+.eq i {
+  display: block;
+  width: 3px;
+  height: 7px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.audio-fab.is-playing .eq i {
+  animation: eq-bounce 0.9s ease-in-out infinite;
+}
+
+.audio-fab.is-playing .eq i:nth-child(2) { animation-delay: 0.15s; }
+.audio-fab.is-playing .eq i:nth-child(3) { animation-delay: 0.3s; }
+.audio-fab.is-playing .eq i:nth-child(4) { animation-delay: 0.45s; }
+
+@keyframes eq-bounce {
+  0%,
+  100% {
+    height: 6px;
+  }
+  50% {
+    height: 18px;
+  }
+}
+
+.lang-switch {
+  position: fixed;
+  z-index: 90;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  inset-inline-start: calc(18px + env(safe-area-inset-left));
+  padding: 9px 16px;
+  border: 1px solid var(--tan-line);
+  border-radius: 9999px;
+  background: var(--ivory-card);
+  color: var(--gold);
+  font-size: 14px;
+  text-decoration: none;
+  box-shadow: var(--shadow-soft);
+}
+
+/* -- Small phones ---------------------------------------------------------- */
+
+@media (max-width: 359px) {
+  :root {
+    --page-padding: 16px;
+    --section-gap: 52px;
+  }
+
+  .reception-inner {
+    padding-inline: 46px;
+  }
+
+  .coverflow-slide {
+    width: 170px;
+    height: 255px;
+    margin-left: -85px;
+  }
+
+  .coverflow {
+    height: 275px;
+  }
+}
